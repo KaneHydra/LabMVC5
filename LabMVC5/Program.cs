@@ -1,3 +1,6 @@
+using LabMVC5.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace LabMVC5
 {
     public class Program
@@ -8,6 +11,7 @@ namespace LabMVC5
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<StudentContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EFTestConnection")));
 
             var app = builder.Build();
 
